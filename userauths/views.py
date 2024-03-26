@@ -52,15 +52,15 @@ def perform_daily_task():
             #     transaction.plan_interval_processed = True
             #     transaction.save()
 
-            # elif int(transaction.interval_count) > int(transaction.convert_description_to_days()):
-            #      # Move total_invested to total_deposit
-            #     transaction.user.total_deposit += transaction.user.total_invested
-            #     transaction.user.total_invested = 0
-            #     transaction.user.save(update_fields=['total_deposit', 'total_invested'])
+            elif time_difference.days >= int(transaction.convert_description_to_days()):
+                 # Move total_invested to total_deposit
+                transaction.user.total_deposit += transaction.user.total_invested
+                transaction.user.total_invested = 0
+                transaction.user.save(update_fields=['total_deposit', 'total_invested'])
 
-            #     # Set plan_interval_processed to True
-            #     transaction.plan_interval_processed = True
-            #     transaction.save()
+                # Set plan_interval_processed to True
+                transaction.plan_interval_processed = True
+                transaction.save()
             else: 
                 pass
 
